@@ -1,0 +1,36 @@
+.contact-item-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.contact-item{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0 15px 0;
+}
+
+.avatar{
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+}
+
+.connection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.contact-name{
+    color: black;
+    font-weight: bold;
+}
+
+.avatar-container{
+    display: flex;
+    gap: 10px;
+}
