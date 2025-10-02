@@ -12,7 +12,7 @@ const ContactItem = ({ contact }) => {
                         <h2 className='contact-name'>{contact.name}</h2>
                     </div>
                     <div className='connection'>
-                        <span>Ult. con.: {contact.lastConnection} hs</span>
+                        <span>Ult. conex.: {contact.lastConnection} hs</span>
                         <span> {contact.connectionStatus}</span>
                     </div>
                 </div>
