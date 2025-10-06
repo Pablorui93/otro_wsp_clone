@@ -1,7 +1,7 @@
 import React from "react";
 import "./Sidebar.css";
-// Sidebar.jsx
-export default function Sidebar() {
+
+const  Sidebar = ()=> {
     return (
         <div className="sidebar">
             <div className="sidebar-top">
@@ -18,3 +18,5 @@ export default function Sidebar() {
         </div>
     );
 }
+
+export default Sidebar
