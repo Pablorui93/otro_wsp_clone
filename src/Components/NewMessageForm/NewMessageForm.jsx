@@ -18,7 +18,7 @@ const NewMessageForm = ({addNewMessage}) => {
                     <label htmlFor="message">Escribe un mensaje:</label>
                     <input className='new-message-form' type="text" placeholder='Escribe un mensaje...' id='message' name='message' required />
                 </div>
-                <button type='submit'>Enviar mensaje</button>
+                <button className='new-message-form-button' type='submit'>Enviar mensaje</button>
             </div>
         </form>
     )

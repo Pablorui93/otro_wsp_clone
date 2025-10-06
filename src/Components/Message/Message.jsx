@@ -15,7 +15,7 @@ const Message = ({emisor, hora, id, texto, status, deleteMessageById}) => {
 		setMessageSelected(true)
 	}
 	return (
-		<div  onContextMenu={handleChangeMessageSelected}>
+		<div onContextMenu={handleChangeMessageSelected}>
 			<p>{texto}</p>
 			<span>{hora}</span>
 			<div className='message-delete'>

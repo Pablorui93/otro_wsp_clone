@@ -1,8 +1,25 @@
 .new-message-form{
     display: flex;
+    font-weight:bold;
 }
 
 
 .new-message-form-container{
     display: flex;
+}
+
+.new-message-form-button {
+    background-color: rgb(30, 170, 30);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    white-space: nowrap; /* Evita que el texto se parta */
+}
+
+.new-message-form-button:hover {
+    background-color: rgb(29, 121, 29)
 }

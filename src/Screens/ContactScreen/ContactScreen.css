@@ -1,9 +1,35 @@
-.contact-screen{
-    margin: 10px;
+
+.contact-screen-container {
+    display: flex;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    overflow: hidden; /* Evita el scroll general */
 }
-.contact-screen-search{
+
+.sidebar-container {
+    /* Estilos existentes para el sidebar */
+}
+
+.contact-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+.contact-screen-title {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+.contact-screen-search {
     width: 100%;
-    height: 30px;
-    border-radius: 10px;
-    margin: 10px 0 10px 0;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 14px;
 }

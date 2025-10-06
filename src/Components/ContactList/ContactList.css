@@ -1,0 +1,7 @@
+.contact-screen-container{
+    background-image: url('https://i.pinimg.com/originals/2b/45/cf/2b45cfec4c0d3c56aed4ccd30b61bd3a.jpg');
+}
+
+.contact-list-container{
+    overflow: auto;
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ContactList from '../../Components/ContactList/ContactList';
 import { getContactList } from '../../services/contactService';
 import './ContactScreen.css'
+import Sidebar from '../../Components/SideBar/SideBar';
 
 
 
@@ -12,13 +13,16 @@ const ContactScreen = () => {
 
     return (
         <div className='contact-screen-container'>
-            <div className='contact-screen'>
-                <h2 className='contact-screen-title'>Chats</h2>
-                <div>
-                    <input className='contact-screen-search' type="text" placeholder=" Buscar un chat o iniciar uno nuevo" />
+                <div className='sidebar-container'>
+                    <Sidebar />
                 </div>
-                <ContactList contacts={contactsState} />
-            </div>
+                <div className='contact-screen'>
+                    <h2 className='contact-screen-title'>Chats</h2>
+                    <div>
+                        <input className='contact-screen-search' type="text" placeholder=" Buscar un chat o iniciar uno nuevo" />
+                    </div>
+                    <ContactList contacts={contactsState} />
+                </div>
         </div>
     );
 };

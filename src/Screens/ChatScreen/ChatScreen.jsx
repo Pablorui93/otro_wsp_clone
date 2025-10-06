@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import MessagesList from '../../Components/MessagesList/MessagesList'
-import {NewMessageForm} from '../../Components/NewMessageForm/NewMessageForm'
+import { NewMessageForm } from '../../Components/NewMessageForm/NewMessageForm'
 import { useParams } from 'react-router'
 import { getContactById } from '../../services/contactService'
 import './ChatScreen.css'
+import Sidebar from '../../Components/SideBar/SideBar'
 
 
 const ChatScreen = () => {
@@ -13,7 +14,7 @@ const ChatScreen = () => {
 	Paso 2: Buscar el contact por su contact_id
 	Paso 3: Cargar el contact.messages al estado de mensajes
 	*/
-	
+
 	/* Paso 1: */
 	/* 
 	useParams() es una funcion que retorna un objeto con los parametros de busqueda de ese momento 
@@ -23,72 +24,77 @@ const ChatScreen = () => {
 	useParams() devolvera {contact_id: '1'}
 
 	*/
-	const {contact_id} = useParams()
+	const { contact_id } = useParams()
 
 	/* Paso 2: */
 	const contact_selected = getContactById(contact_id)
 
 	/* Paso 3: */
-    const [messages, setMessages] = useState(contact_selected.messages)
+	const [messages, setMessages] = useState(contact_selected.messages)
 
 	const deleteMessageById = (message_id) => {
 		const new_message_list = []
-		for(const message of messages){
-			if(message.id !== message_id){
+		for (const message of messages) {
+			if (message.id !== message_id) {
 				new_message_list.push(message)
 			}
-		} 
+		}
 		setMessages(new_message_list)
 	}
 
 	const addNewMessage = (text) => {
-		
+		const ahora = new Date();
+
 		const new_mesage = {
 			emisor: 'YO',
-			hora: Date.now(), //Investigar acerca de Date.
+			hora: ahora.getHours() + ':' + ahora.getMinutes(),
 			texto: text,
 			status: 'no-visto',
 			id: messages.length + 1
 		}
-		//Clonar la lista de mensajes (Porque: El clon al ser otra variable PERO NO UN ESTADO si lo vamos a poder mutar)
-		const cloned_messages_list = [...messages]
-		//Este push es valido porque no estamos mutando en estado 'messages' sino mas bien el clon de ese estado
-		cloned_messages_list.push(new_mesage)
-		setMessages(cloned_messages_list)
+//Clonar la lista de mensajes (Porque: El clon al ser otra variable PERO NO UN ESTADO si lo vamos a poder mutar)
+const cloned_messages_list = [...messages]
+//Este push es valido porque no estamos mutando en estado 'messages' sino mas bien el clon de ese estado
+cloned_messages_list.push(new_mesage)
+setMessages(cloned_messages_list)
 	}
 
-	const deleteAllMessages = () => {
-		setMessages([])
-	}
+const deleteAllMessages = () => {
+	setMessages([])
+}
 
-	
-    return (
-        <div>
-            <div className='chat-header'>
-				<div className='avatar-header'>
-					<img className='avatar' src={contact_selected.avatar} alt="" />
-					<h2>{contact_selected.name}</h2>
-				</div>
-				<div className='icons'>
-					<i class="fa-solid fa-video"></i>
-					<i class="fa-solid fa-phone"></i>
-					<i class="fa-solid fa-magnifying-glass"></i>
-				</div>
-			</div>
 
-			<div className='messages'>
-				<MessagesList messages={messages} deleteMessageById={deleteMessageById}/>
+return (
+	<div className='chat-screen-container'>
+		<div className='chat-header'>
+			<div className='avatar-header'>
+				<img className='avatar' src={contact_selected.avatar} alt="" />
+				<h2>{contact_selected.name}</h2>
 			</div>
-			<div className='new-message'>
-				<NewMessageForm addNewMessage={addNewMessage}/>
-			{
-				messages.length > 0
-				&&
-				<button onClick={deleteAllMessages}>Borrar todos los mensajes</button>
-			}
+			<div className='icons'>
+				<i class="fa-solid fa-video"></i>
+				<i class="fa-solid fa-phone"></i>
+				<i class="fa-solid fa-magnifying-glass"></i>
 			</div>
-        </div>
-    )
+		</div>
+		<br />
+		<div className='messages'>
+			<MessagesList messages={messages} deleteMessageById={deleteMessageById} />
+		</div>
+		<div className='new-message'>
+			<div>
+				<NewMessageForm addNewMessage={addNewMessage} />
+			</div>
+			<div>
+				{
+					messages.length > 0
+					&&
+					<button className='delete-all-messages' onClick={deleteAllMessages}>Borrar todos los mensajes</button>
+				}
+			</div>
+		</div>
+	</div>
+)
 }
 
 
