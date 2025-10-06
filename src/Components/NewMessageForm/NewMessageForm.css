@@ -23,3 +23,11 @@
 .new-message-form-button:hover {
     background-color: rgb(29, 121, 29)
 }
+
+
+@media screen and (max-width: 768px) {
+    
+    .new-message-form-container{
+        flex-direction: column;
+    }
+}
